@@ -1,11 +1,66 @@
 <span>Esto es una vista, recuerden que las vistas son referenciados por medio del routing</span>
-<table>
+<table *ngIf="isVisible">
+  <th>
+    <tr>
+      <td colspan="2">Mi TABLA</td>
+    </tr>
+  </th>
   <tr>
-    <td>Header 1</td>
-    <td>Header 2</td>
+    <td class="stronger">ID</td>
+    <td>Name</td>
   </tr>
-  <tr>
-    <td>Content 1</td>
-    <td>Content 2</td>
+  <tr *ngFor="let item of list"
+      [ngClass]="{
+          'red': !item.active,
+          'dark': item.active
+        }">
+    <td [title]="identifier"
+        [ngStyle]="{
+        'background-color': item.active ? 'blue' : 'grey'
+        }"
+        [id]="item.id + '_' + item.name">{{item.id}}</td>
+    <td [class]="'stronger'">{{item.name}}</td>
+    <td>
+      <button (click)="changeStatus(item)">Cambiar estatus</button>
+    </td>
   </tr>
 </table>
+
+<table *ngIf="isVisible">
+  <th>
+    <tr>
+      <td colspan="2">Mi TABLA</td>
+    </tr>
+  </th>
+  <tr>
+    <td>ID</td>
+    <td>Name</td>
+  </tr>
+  <tr *ngFor="let item of list">
+    <ng-template [ngIf]="item.active">
+      <td>{{item.id}}</td>
+      <td>{{item.name}}</td>
+    </ng-template>
+  </tr>
+</table>
+
+<table *ngIf="isVisible">
+  <th>
+    <tr>
+      <td colspan="2">Mi TABLA</td>
+    </tr>
+  </th>
+  <tr>
+    <td>ID</td>
+    <td>Name</td>
+  </tr>
+  <ng-template ngFor let-item [ngForOf]="list">
+    <tr *ngIf="item.active">
+      <td>{{item.id}}</td>
+      <td>{{item.name}}</td>
+    </tr>
+  </ng-template>
+
+</table>
+
+<button (click)="changeVisibility()"> Presioname</button>
