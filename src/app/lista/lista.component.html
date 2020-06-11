@@ -8,18 +8,19 @@
   <tr>
     <td class="stronger">ID</td>
     <td>Name</td>
+    <td>Es Niña</td>
+    <td>Fecha de nacimiento</td>
   </tr>
-  <tr *ngFor="let item of list"
-      [ngClass]="{
-          'red': !item.active,
-          'dark': item.active
-        }">
+  <tr *ngFor="let item of list">
     <td [title]="identifier"
-        [ngStyle]="{
-        'background-color': item.active ? 'blue' : 'grey'
-        }"
+        appStatusColor
+        [objeto]="item"
         [id]="item.id + '_' + item.name">{{item.id}}</td>
     <td [class]="'stronger'">{{item.name}}</td>
+    <td> {{booleanToString(item.isFemale)}}</td>
+    <td> {{dateToString(item.birthDate)}}</td>
+    <td> {{item.birthDate | date: 'dd/MM/yyyy HH:mm':'UTC'}}</td>
+    <td> {{item.isFemale | appBoolean}}</td>
     <td>
       <button (click)="changeStatus(item)">Cambiar estatus</button>
     </td>
