@@ -6,8 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListaComponent } from './lista/lista.component';
 import { HeaderComponent } from './header/header.component';
+import { MyServiceService } from './my-service.service';
 import { StatusColorDirective } from './status-color.directive';
 import { BooleanPipe } from './boolean.pipe';
+import { DetalleComponent } from './detalle/detalle.component';
 
 @NgModule(
   {
@@ -18,6 +20,7 @@ import { BooleanPipe } from './boolean.pipe';
       HeaderComponent,
       StatusColorDirective,
       BooleanPipe,
+      DetalleComponent,
     ],
     imports: [
       // all external modules that are dependencies are declared here
@@ -27,7 +30,7 @@ import { BooleanPipe } from './boolean.pipe';
     providers: [
       // all application services
       BooleanPipe,
-      DatePipe,
+      DatePipe
     ],
     bootstrap: [AppComponent]
   }

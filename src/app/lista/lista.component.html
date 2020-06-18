@@ -10,6 +10,8 @@
     <td>Name</td>
     <td>Es Niña</td>
     <td>Fecha de nacimiento</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr *ngFor="let item of list">
     <td [title]="identifier"
@@ -23,6 +25,9 @@
     <td> {{item.isFemale | appBoolean}}</td>
     <td>
       <button (click)="changeStatus(item)">Cambiar estatus</button>
+    </td>
+    <td>
+      <button (click)="goToDetalle(item)">Ir Detalle</button>
     </td>
   </tr>
 </table>

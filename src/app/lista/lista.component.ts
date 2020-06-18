@@ -1,21 +1,23 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ApiService } from '../api.service';
 import { BooleanPipe } from '../boolean.pipe';
+import { MyServiceService } from '../my-service.service';
 
 @Component({
   selector: 'app-lista',
   templateUrl: './lista.component.html',
   styleUrls: ['./lista.component.scss'],
+  providers: [
+    MyServiceService,
+  ]
 })
 export class ListaComponent implements OnInit {
 
   isVisible = true;
   identifier = 'listLeo';
-  list = [
-    {id: '1', name: 'leo', active: true, isFemale: false, birthDate: new Date()},
-    {id: '2', name: 'maria', active: false, isFemale: true, birthDate: new Date()},
-    {id: '3', name: 'marcos', active: true, isFemale: false, birthDate: new Date()}
-  ];
+  list = [];
 
   private obj = {
     name: 'leo',
@@ -24,11 +26,16 @@ export class ListaComponent implements OnInit {
   };
 
   constructor(private booleanPipe: BooleanPipe,
-              private datePipe: DatePipe) {
+              private datePipe: DatePipe,
+              private myService: MyServiceService,
+              private router: Router,
+              private apiService: ApiService) {
   }
 
   ngOnInit(): void {
 
+    this.list = this.apiService.getList();
+    this.myService.print();
     for (let i = 0; i < 10; i++) {
       console.log(i);
     }
@@ -59,5 +66,15 @@ export class ListaComponent implements OnInit {
   booleanToString(data: boolean) {
     console.log('boolean function');
     return data ? 'Sí' : 'No';
+  }
+
+  goToDetalle(item) {
+    // Acceso al set detalle desde una funcion
+    this.myService.setDetalle(item);
+
+    // Acceso al set detalle desde set de typescripts
+    this.myService.detalle2 = item;
+
+    this.router.navigate(['/detalle']);
   }
 }
