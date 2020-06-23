@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,9 @@ export class ApiService {
     }
 
     return this.list;
+  }
+
+  public async getItem() {
+    return {"name": "Leonardo Guzman", "isFemale": true, "birthDate": "2020-06-03"};
   }
 }

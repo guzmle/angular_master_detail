@@ -1,5 +1,35 @@
 <p>detalle works!</p>
 
+<div style="margin-bottom: 10px">
+  <div>
+    <label for="name">Nombre</label>
+    <input type="text" name="name" id="name"
+           [formControl]="form.get('name')"
+           [(ngModel)]="myForm.name">
+
+    <span style="color: red" *ngIf="form.get('name').errors">
+      <span *ngIf="form.get('name').errors.required"></span>
+      El valor es required
+    </span>
+  </div>
+
+  <div style="margin-top: 10px">
+    <label for="isFemale">Es Niña</label>
+    <input type="checkbox" name="isFemale" id="isFemale"
+           [formControl]="form.get('isFemale')"
+           [(ngModel)]="myForm.isFemale"
+           (ngModelChange)="setIsFemale($event)">
+  </div>
+
+  <div style="margin-top: 10px">
+    <label for="birthDate">Fecha de nacimiento</label>
+    <input type="date" name="birthDate" id="birthDate"
+           [formControl]="form.get('birthDate')"
+           [(ngModel)]="myForm.birthDate">
+  </div>
+
+  <button (click)="saveData()"> Aceptar</button>
+</div>
 
 <button (click)="goToBack()">Regresar</button>
 <button (click)="goToBackLocation()">Regresar Location</button>
