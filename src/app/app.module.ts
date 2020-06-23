@@ -4,32 +4,22 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ListaComponent } from './lista/lista.component';
-import { HeaderComponent } from './header/header.component';
-import { MyServiceService } from './my-service.service';
-import { StatusColorDirective } from './status-color.directive';
-import { BooleanPipe } from './boolean.pipe';
-import { DetalleComponent } from './detalle/detalle.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule(
   {
     declarations: [
       // all the components and views that belong to the module must be declared here
       AppComponent,
-      ListaComponent,
-      HeaderComponent,
-      StatusColorDirective,
-      BooleanPipe,
-      DetalleComponent,
     ],
     imports: [
       // all external modules that are dependencies are declared here
       BrowserModule,
-      AppRoutingModule
+      AppRoutingModule,
+      SharedModule,
     ],
     providers: [
       // all application services
-      BooleanPipe,
       DatePipe
     ],
     bootstrap: [AppComponent]

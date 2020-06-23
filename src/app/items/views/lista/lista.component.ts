@@ -1,17 +1,14 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from '../api.service';
-import { BooleanPipe } from '../boolean.pipe';
-import { MyServiceService } from '../my-service.service';
+import { ApiService } from '../../../api.service';
+import { BooleanPipe } from '../../../shared/pipes/boolean.pipe';
+import { MyServiceService } from '../../../shared/services/my-service.service';
 
 @Component({
   selector: 'app-lista',
   templateUrl: './lista.component.html',
   styleUrls: ['./lista.component.scss'],
-  providers: [
-    MyServiceService,
-  ]
 })
 export class ListaComponent implements OnInit {
 
@@ -75,6 +72,6 @@ export class ListaComponent implements OnInit {
     // Acceso al set detalle desde set de typescripts
     this.myService.detalle2 = item;
 
-    this.router.navigate(['/detalle']);
+    this.router.navigate(['/items/detalle']);
   }
 }

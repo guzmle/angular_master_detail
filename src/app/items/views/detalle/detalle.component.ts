@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { MyServiceService } from '../my-service.service';
+import { MyServiceService } from '../../../shared/services/my-service.service';
 
 @Component({
   selector: 'app-detalle',
   templateUrl: './detalle.component.html',
   styleUrls: ['./detalle.component.scss'],
-  providers: [
-    MyServiceService,
-  ]
 })
 export class DetalleComponent implements OnInit {
 
